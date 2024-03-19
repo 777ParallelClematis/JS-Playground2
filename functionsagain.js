@@ -1,0 +1,2 @@
+const onelinearray = (arr) => arr.map(el => el * 2)
+console.log(onelineArray([2,5,4]))
