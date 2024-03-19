@@ -51,10 +51,67 @@ function sumOfMin(arr) { // Create a function named sumOfMin that takes an array
       } 
    return sum; // Return the sum variable after the loop has finished running and all the minimum values have been added to the sum.
 }
-//console.log(sumOfMin([[5, 3, 4], [2, 5, 8]]));
+//console.log(sumOfMin([[5, 3, 4], [2, 5, 8]])); NOT ENOUGH BRACKETS
 //
 console.log(sumOfMin([[2, 3, 4], [2, 5, 8]]));
 
 // 
 //es6
+const sumMinArraysNew = arr => arr.reduce((a,b) => a + Math.min(...b), 0)
+// "..."" is SPREAD OPERATOR 
+//
+//console.log(sumMinArraysNew[(3, 1), (3, 4)])
+console.log(sumMinArraysNew([[3, 1], [3, 4]]));
 
+//create a function that takes an array and returns duplicate numbers
+// so doubleUp([1, 2, 3, 4, 5, 6, 5, 1]) output -> [5, 1]
+// 
+//function doubleUp(arr) {
+//if else, return arr
+
+//}
+
+const ArraysDuplicateNumbers = arr => {
+//const ArraysDuplicateNumbers = arr => {
+   arr= [...new Set([...arr.filter(num => {
+//arr = [...new Set(arr.filter((num, index) => arr.indexOf(num)
+      arr.indexOf(num) !== arr.lastIndexOf(num)
+// !== arr.lastIndexOf(num)))].sort((a, b) => a - b);
+   })])].sort((a, b) => a -b)
+
+arr.length ? arr: null
+//return arr.length ? arr : null;
+}
+console.log(ArraysDuplicateNumbers([1, 2, 3, 4, 5, 6, 5, 1]))
+
+
+// HERE WE GO
+      // new Set, .filter, sort, ...   
+const ArraysDuplicateNumbersAgain = arr => (
+// declare a function that is an array
+   arr= [... new Set([...arr.filter(num =>(
+// ... 
+      arr.indexOf(num !== arr.lastIndexOf(num))
+// "indexOf" spits out location of the double up. 
+   ))])].sort((a, b) => a-b),
+// MANY BRACKETS
+   arr.length ? arr: null  
+)
+console.log(ArraysDuplicateNumbersAgain([1, 2, 1, 1, 4, 4, 1]))
+
+//refactor as ES5
+
+function DuplicatesEs5(arr) {
+ const dupes = []
+ for (let i = 0; i < arr.length;i++) {
+// for (let i = 0; i < arr.length; i++) {
+   for (let d = i + 1; d < arr.length; d++){
+      if (arr[i] === arr[d] && ! dupes.includes(arr[i])) {
+         dupes.push(arr[i]);
+
+      }
+   }
+ }
+ return dupes
+}
+console.log(DuplicatesEs5([1, 1, 1, 1, 2, 4, 5, 3]))
